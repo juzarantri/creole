@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    This is to represent higher order function with function as a argument
+    <p id="hofwfa" style="padding-top: 0px;margin-top: 0%;"></p>
+    This is to represent higher order function with function returning a new function
+    <p id="hofwfrnf" style="padding-top: 0px;margin-top: 0%;"></p>
+    
+    <script>
+        /*
+            A function that receives another function as an argument 
+            or that returns a new function or both is called Higher-order
+            function. Higher-order functions are only possible because of 
+            the First-class function.
+        */
+        
+        /// higher order function with function as a argument
+        function callFunc(){
+            return "This part is from callback function";
+        }
+        function mainFunc(callback){
+            let answer = "";
+            answer = "This part is from main function <br>";
+            return answer += callback();
+        }
+        document.getElementById("hofwfa").innerHTML = mainFunc(callFunc);
+
+
+        /// higher order function with function returning a new function
+        const greet = function(name){
+            return function(surName){
+                return name + " " + surName;
+            }
+        }
+        document.getElementsByTagName("p")[1].innerHTML = greet("juzar")("antri");
+    </script>
+
+</body>
+</html>

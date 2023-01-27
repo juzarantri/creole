@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="fullname"></p>
+    <script>
+        /* the curring function meaning wrapping of function inside other function 
+           to perform any task. It has the concept of javascript clousers inside it
+           like binding an anonymms function to a variable so that it can access the 
+           block scope variable inside it without loosing its value. 
+        */
+
+        /// currying function to get fullname of a person
+        const getFullName = function(name){
+            return function(fatherName){
+                return function(surName){
+                    return name + " " + fatherName + " " + surName;
+                }
+            }
+        }
+
+        document.getElementById("fullname").innerHTML = getFullName("juzar")("yusufbhai")("antri");
+
+
+    </script>
+</body>
+</html>

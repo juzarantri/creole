@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    For in loops over object and arrays<br><br>
+</body>
+    <script>
+        /// looping through object and arrays and return a key on each iteration
+        const person = {fname:"Juzar",lname:"Antri",age:21};
+        let text = "";
+        for(let x in person){
+            text += person[x] + " ";
+        }
+        document.write(text + "<br><br>");
+
+
+        /// looping over arrays
+        const numbers = [45,56,5,6,78];
+        let txt = "";
+        for(let x in numbers){
+            txt += numbers[x] + " ";
+        }
+        document.write(txt + "<br>");
+
+    </script>
+</html>
