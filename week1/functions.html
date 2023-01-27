@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<p id = "invokeFunc"></p>
+<p id = "invokeFuncWithParams"></p>
+<p id = "selfInvokFunc"></p>
+<p id = "variableFunc"></p>
+<body>
+    <script>
+        /// this is a function which will be called upon user invocation
+        function invokeFunc(){
+            let text = document.getElementById("invokeFunc");
+            text.innerHTML = "I am the function which is begin invoked \
+            when user calls me with invokeFunc()";
+        }
+
+        /* this is a function which will be called upon user invocation with arguments
+           it is recomended to provide initial args with default value so that
+           when user for gets to pass some arguments the it will assume its default
+           value
+        */
+        function invokeFuncWithParams(x = 0,y = 0){
+            let text = document.getElementById("invokeFuncWithParams");
+            text.innerHTML = `I am the function which is begin invoked \
+            when user calls me with invokeFuncWithParams(x,x) and will provide addition of ${x} + ${y} = ${x+y}`;
+        }
+
+        // this is self invoking function
+        (function selfInvokFunc(){
+            let text = document.getElementById("selfInvokFunc");
+            text.innerHTML = `I am begin invoked by myself`  
+        })();
+
+        // this is variable function 
+        let x = function(){
+            return 5;
+        }
+        let text = document.getElementById("variableFunc");
+            text.innerHTML = "I am a variable function which get the value by writing x() in the name of function " + x()  
+        invokeFunc();
+        invokeFuncWithParams(5,3);
+    </script>
+</body>
+</html>
