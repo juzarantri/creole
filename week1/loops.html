@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    This is loops demo <br>
+    <script>
+        // I have used different script tag just to make the code 
+        // view simple. We can do this also in a single script tag
+        
+        // for loop for 10's table
+        document.write("10 table using for loop<br>")
+        var table = "";
+        for(let no = 1; no <= 10; no++){
+            table += "10 x " + no + ` = ${10*no} <br>`; 
+        }
+        document.write(table+"<br><br>");
+    </script>
+
+    <script>
+        
+        // while loop for 20's table
+        document.write("20 table using while loop<br>")
+        var table = "";
+        var no = 1;
+        while(no <= 10){
+            table += "20 x " + no + ` = ${20*no} <br>`; 
+            no++;
+        }
+        document.write(table+"<br><br>");
+    </script>
+
+    <script>
+            
+        // do while loop for 30's table
+        document.write("30 table using do while loop<br>")
+        var table = "";
+        var no = 1;
+        do{
+            table += "30 x " + no + ` = ${30*no} <br>`; 
+            no++;
+        }while(no <= 10)
+        
+        document.write(table+"<br><br>");
+    </script>
+</body>
+</html>
