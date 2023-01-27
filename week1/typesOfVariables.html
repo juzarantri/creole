@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+    <script>
+        
+        /*
+            let and const both have block scope 
+            but const is bind to a reference 
+
+            var has a global scope and it can be used 
+            before declaring because of the hoisting feature of javascript
+        */
+        var globalVariable = "This is var variable. I have a global scope";;
+
+        (function temp(){
+            let funcLetVariable = "This is function let variable.";
+            let funcConstVariable = "This is function const variable.";
+            
+            document.write(globalVariable);
+            document.write("<br>"+funcConstVariable);
+            document.write("<br>"+funcLetVariable);
+            
+        })();
+
+        // the variables funcLetVariable and 
+        // funcConstVariable are not accessible because
+        // of block scope
+
+        // document.write(funcConstVariable);
+        // document.write(letConstVariable);
+
+    </script>
+    
+</body>
+</html>
