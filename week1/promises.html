@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>This is complex example of callback which is solved using promises</p>
+
+    Gmail: <input type="text" ><br>
+    Phone: <input type="number"><br>
+    Password: <input type="password" name="" id=""><br>
+    <input type="submit" onclick="getData()">
+    <br>
+    <br>
+    <p id="output"></p>
+
+</body>
+<script>
+    var output = "";
+    getData = () => {
+        let inputs = document.getElementsByTagName("input");
+        var gmail = inputs[0].value;
+        var phone = inputs[1].value;
+        var password = inputs[2].value;
+
+        validateData(gmail,phone,password,validateGmail,validatePhone,validatePassword).then((result) => {
+            document.getElementById("output").innerHTML = output + "<br>" + result;
+            output = "";
+        }).catch((err) => {
+            document.getElementById("output").innerHTML = output + "<br>" + err;
+            output = "";
+        });;       
+    }
+    /// function to invoke callbacks
+    validateData =  (gmail,phone,password,callback1,callback2,callback3) => {
+        return new Promise((myResolve,myReject) => {
+            let b1 = false, b2 = false, b3 = false;
+            b1 = callback1(gmail);
+            b2 =   callback2(phone);
+            b3 =  callback3(password);    
+            if(b1 == true && b2 == true && b3 == true){
+                myResolve("Done and Dusted...")
+            }else{
+                myReject(Error("Wrecked up..."))
+            }
+        });
+        
+    }
+    /// gmail validation
+    function validateGmail(gmail){
+        var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(gmail.match(mailFormat)){
+            output += "Provided gmail is correct <br>";
+            return true;
+        }else{
+            output += "Provided gmail is not correct <br>";
+            return false;
+        }
+        
+    }
+    /// password validation 
+    function validatePassword(password){
+        var passwordFormat = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        if(password.match(passwordFormat)){
+            output += "Provided password is correct <br>";
+            return true;
+        }else{
+            output += "Provided password is not correct <br>";
+            return false;
+        }
+    }
+    /// phone number validation
+    function validatePhone(phone){
+        var phoneFormat = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+        if(phone.match(phoneFormat)){
+            output += "Provided phone number is correct <br>";
+            return true;
+        }else{
+            output += "Provided phone number is not correct <br>";
+            return false;
+        }
+    }
+    
+    
+</script>
+</html>
