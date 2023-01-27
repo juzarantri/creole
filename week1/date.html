@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<p>The Date object works with dates and times. Date objects are created with new Date()</p>
+<body>
+    <script>
+        let date = new Date();
+        //// all get methods for date
+        document.write(date + "<br>");
+        document.write("toDateString() 	Converts the date portion of a Date object into a readable string:  " + date.toDateString() + "<br>" );
+        document.write("getDate()	Returns the day of the month (from 1-31):  " + date.getDate() + "<br>" );
+        document.write("getDay()	Returns the day of the week (from 0-6):  " + date.getDay() + "<br>" );
+        document.write("getFullYear()	Returns the year:  " + date.getFullYear() + "<br>" );
+        document.write("getHours()	Returns the hour (from 0-23):  " + date.getHours() + "<br>" );
+        document.write("getMilliseconds()	Returns the milliseconds (from 0-999):  " + date.getMilliseconds() + "<br>" );
+        document.write("getMinutes()	Returns the minutes (from 0-59):  " + date.getMinutes() + "<br>" );
+        document.write("getMonth()	Returns the month (from 0-11):  " + date.getMonth() + "<br>" );
+        document.write("getSeconds()	Returns the seconds (from 0-59):  " + date.getSeconds() + "<br>" );
+        document.write("getTime()	Returns the number of milliseconds since midnight Jan 1 1970, and a specified date:  " + date.getTime() + "<br>" );
+        document.write("getTimezoneOffset()	Returns the time difference between UTC time and local time, in minutes:  " + date.getTimezoneOffset() + "<br>" );
+        document.write("now()	Returns the number of milliseconds since midnight Jan 1, 1970:  " + Date.now() + "<br>" );
+        document.write("parse()	Parses a date string and returns the number of milliseconds since January 1, 1970:  " + Date.parse(date) + "<br><br><br>" );
+
+        //// all set methods for date
+        let x1 = new Date();
+        x1.setDate(2);
+        document.write("setDate()	Sets the day of the month of a date object:  " + x1.toDateString() + "<br>" );
+        let x = new Date();
+        x.setFullYear(2020);
+        document.write("setFullYear()	Sets the year of a date object:  " + x.toDateString() + "<br>" );
+        let x2 = new Date();
+        x2.setHours(2020);
+        document.write("setHours()	Sets the hour of a date object:  " + x2.toDateString() + "<br>" );
+        let x3 = new Date();
+        x3.setMilliseconds(2045420);
+        document.write("setMilliseconds()	Sets the milliseconds of a date object:  " + x3.toDateString() + "<br>" );
+        let x4 = new Date();
+        x4.setMinutes(20);
+        document.write("setMinutes()	Set the minutes of a date object:  " + x4.toDateString() + "<br>" );
+        let x5 = new Date();
+        x5.setMonth(23);
+        document.write("setMonth()	Sets the month of a date object:  " + x5.toDateString() + "<br>" );
+        let x6 = new Date();
+        x6.setSeconds(2000020);
+        document.write("setSeconds()	Sets the seconds of a date object:  " + x6.toDateString() + "<br>" );
+        let x7 = new Date();
+        x7.setTime(2020);
+        document.write("setTime()	Sets a date to a specified number of milliseconds after/before January 1, 1970:  " + x7.toDateString() + "<br>" );
+
+        
+    </script>
+</body>
+</html>
