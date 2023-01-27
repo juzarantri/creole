@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>This is complex example of callback</p>
+    <p>The output might varry as per the input</p>
+    Gmail: <input type="text" ><br>
+    Phone: <input type="number"><br>
+    Password: <input type="password" name="" id=""><br>
+    <input type="submit" onclick="getData()">
+    <br>
+    <br>
+    <p id="output"></p>
+
+</body>
+<script>
+    var output = "";
+    getData = () => {
+        let inputs = document.getElementsByTagName("input");
+        var gmail = inputs[0].value;
+        var phone = inputs[1].value;
+        var password = inputs[2].value;
+
+        validateData(gmail,phone,password,validateGmail,validatePhone,validatePassword);       
+    }
+    /// tooo many callback will not help to get desired output
+    validateData = (gmail,phone,password,callback1,callback2,callback3) => {
+        callback1(gmail);
+        callback2(phone);
+        callback3(password);
+    }
+
+    function validateGmail(gmail){
+        var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(gmail.match(mailFormat)){
+            output += "Provided gmail is correct <br>";
+        }else{
+            output += "Provided gmail is not correct <br>";
+        }
+    }
+
+    function validatePassword(password){
+        var passwordFormat = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        if(password.match(passwordFormat)){
+            output += "Provided password is correct <br>";
+        }else{
+            output += "Provided password is not correct <br>";
+        }
+    }
+
+    function validatePhone(phone){
+        var phoneFormat = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+        if(phone.match(phoneFormat)){
+            output += "Provided phone number is correct <br>";
+        }else{
+            output += "Provided phone number is not correct <br>";
+        }
+        // console.log(output)
+    }
+    /// this will not show output because till time the above function execute
+    /// this will be executed before them. To fix this we need to use 
+    /// async/await and promises
+    document.getElementById("output").innerHTML = output;
+    output = ""
+    
+    
+</script>
+</html>
