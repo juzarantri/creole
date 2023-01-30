@@ -1,0 +1,4 @@
+-Typescript allows developers to add type to the javascript.
+-Typescript check for types error at compile time.
+-Typescript is transpiled into javascript using a compiler.
+-To setup Typescript refer https://www.w3schools.com/typescript/typescript_getstarted.php
