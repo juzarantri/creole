@@ -1,0 +1,47 @@
+Step 1: Download data file
+http://eforexcel.com/wp/wp-content/uploads/2017/07/1500000%20Sales%20Records.zip
+
+Step 2: Create table
+CREATE TABLE test.Sales(
+    Region varchar(50),
+    Country varchar(50),
+    ItemType varchar(50) NULL,
+    SalesChannel varchar(50) NULL,
+    OrderPriority varchar(50) NULL,
+    OrderDate datetime,
+    OrderID bigint NULL,
+    ShipDate datetime,
+    UnitsSold float,
+    UnitPrice float,
+    UnitCost float,
+    TotalRevenue float,
+    TotalCost float,
+    TotalProfit float,
+    CreatedDate datetime
+);
+
+	
+Step 3: To insert data in table
+-If you have linux copy the csv file in /tmp folder to make it accessible to mysql
+-Using the below query to insert data with STR_TO_DATE beacuse the default datetime format for mysql is YYYY-MM-DD:
+
+LOAD DATA INFILE '/tmp/1500000 Sales Records.csv' INTO TABLE Sales FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS 
+( Region,Country,ItemType,SalesChannel,OrderPriority,@OrderDate,OrderID,@ShipDate,UnitsSold,UnitPrice,TotalRevenue,TotalCost,TotalProfit,CreatedDate )
+SET 
+OrderDate = DATE_FORMAT(@OrderDate,'%c-%d-%y'),
+ShipDate = STR_TO_DATE(@ShipDate,'%c-%d-%y')
+
+Step 4: It will show error because we have an extra column in the sale CreatedDate.
+Solution:
+
+1.Create a View
+CREATE VIEW SalesView
+AS
+SELECT Region,Country,ItemType,SalesChannel,OrderPriority,OrderDate,OrderID,ShipDate,UnitsSold,UnitPrice,UnitCost,TotalRevenue,TotalCost,TotalProfit FROM Sales;
+
+2.Insert into view
+LOAD DATA INFILE '/tmp/1500000 Sales Records.csv' INTO TABLE SalesView FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 ROWS 
+( Region,Country,ItemType,SalesChannel,OrderPriority,@OrderDate,OrderID,@ShipDate,UnitsSold,UnitPrice,UnitCost,TotalRevenue,TotalCost,TotalProfit)
+SET 
+OrderDate = STR_TO_DATE(@OrderDate,'%c/%e/%Y'),
+ShipDate = STR_TO_DATE(@ShipDate,'%c/%e/%Y')
