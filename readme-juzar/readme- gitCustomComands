@@ -1,0 +1,5 @@
+This is the tutorial link for automating git commands
+https://gitbetter.substack.com/p/automate-repetitive-tasks-with-custom
+To add to path in ubuntu uses the following export PATH="/home/juzar/Desktop/my-git-custom-commands:$PATH"
+
+and add the above command after doing sudo su

@@ -1,0 +1,2 @@
+IF there is an error which deletes all the history the fix that issue by runnung the following command
+gpaste-client daemon-reexec
