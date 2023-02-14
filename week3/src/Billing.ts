@@ -29,11 +29,10 @@ export class Billing extends Expense {
 
     //// Bill printing
     public printBill() : void {
-        console.log("No.\t\t|Expense\t\t\t|Month\t\t|Amount in " + Billing.currency);
         let count : number = 0, total : number = 0;
         
+        console.table(this.expenses,["id","expense","price","month"]);
         this.expenses.forEach((element) => {
-            console.log(`${++count}.\t\t|${element.expense }\t\t\t|${months[element.month-1]}\t\t|${element.price}`);
             total += (element.price * Billing.currencyPrice);
         });
         console.log("Total expense amount in " + Billing.currency + " is " + total);

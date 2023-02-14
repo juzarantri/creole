@@ -1,0 +1,73 @@
+
+1. Reverse that string
+This one is a classic. Simply reverse the string without using reverse().
+Input -> "I am a string"
+Output -> gnirts a ma I
+
+2. Remove specific characters from a string
+What’s the most efficient way to strip specific characters from a string? Without using replace().
+Your function must strip multiple different characters from the provided string.
+input -> function("I am an example string", ["a", "x"])
+output -> I m n emple string
+
+3. Find the most common character within the string. Given any string, find the most commonly occurring character. If there are 2 or more most commonly occurring characters; return the character which comes first alphabetically.
+For instance: xybbbefaaag 
+Would return a, as a and b both occur 3 times each, respectively, but a comes before b alphabetically.
+input -> function("abcddefg")
+output -> d
+input -> function("heggbdeff")
+output -> f
+
+4. Find the repeating characters. Return an array containing all repeating characters that occur in the provided string. Your function should accept a second parameter that defines how many times the target character should repeat before it is returned.
+input -> function("abcddef", 2) 
+output -> [d]
+input -> function("tfghhhplffzaaa", 3)
+output -> [h, a]
+
+5. Is the nth letter a vowel or a consonant? Determine whether the letter at the supplied index in the provided string is either a vowel or a consonant.
+input -> function("hello", 4) 
+output -> consonant
+input -> function("cat", 2)
+output -> vowel
+
+6. Sort the string alphabetically. Return the supplied string in alphabetical order. Your function must be able to sort the string in either direction; so either ascending or descending alphabetical order.
+input -> function("bacd", false) 
+output -> abcd
+input -> function("axedzpq", true)
+output -> zxqpeda
+
+7.Is the string in alphabetic order? Similarly, what’s the most efficient way to check if a string is in alphabetic order? Your function must be able to verify reverse-alphabetic order, also.
+input -> function("abbcddeikl", false) 
+output -> true
+input -> function("jheca", true)
+output -> true
+
+8. Capitalize the first letter of each word. Write a function to capitalize the first letter of each word in the provided string.
+input -> function("i am a string") 
+output -> I Am A String
+
+9. Search for a string within a string. Does the target string contain the provided string? No use of indexOf() or similar functions is allowed.
+input -> function("catapult", "cat") 
+output -> true
+
+10. Shuffle the string. Write a function to completely randomize a given string. The string should be scrambled entirely, in a random a manner as possible.
+input -> function("hello")
+output-> lelho
+
+11. Alternating caps. Return the supplied string, but every other letter should be capitalized.
+input -> function("I am a string"))
+output-> I aM a StRiNg
+
+12. Quote extractor. Given a quote in a format like this:
+“[QUOTE]” – [author]
+Return an array containing both the quote text and the author. Both components (quote, author) could also contain hyphens (-).
+example->
+const quote = `"The unexamined life is not worth living." - Socrates`
+input -> function(quote)
+output -> ["The unexamined life is not worth living.", "Socrates"]
+
+13. Verify the email address. In this JavaScript exercise, write a function to determine whether an email address is valid or not.
+input -> function("somebody@somewhere"))
+output -> false
+input -> function("person@company.com"))
+output -> true
