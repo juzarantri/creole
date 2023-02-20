@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1",
+        "type": "Anime",
+        "name": "Boku no Hero Academia"
+    },
+    {
+        "id": "2",
+        "type": "Anime",
+        "name": "Jujutsu Kaisen"
+    },
+    {
+        "id": "3",
+        "type": "Anime",
+        "name": "Shingeki no Kyojin"
+    }
+]
