@@ -1,0 +1,2 @@
+# app.route()
+👉 You can create chainable route handlers for a route path by using app.route(). Because the path is specified at a single location, creating modular routes is helpful, as is reducing redundancy and typos.
