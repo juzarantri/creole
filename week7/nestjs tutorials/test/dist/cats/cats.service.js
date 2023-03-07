@@ -7,20 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatsService = void 0;
-var common_1 = require("@nestjs/common");
-var CatsService = /** @class */ (function () {
-    function CatsService() {
+const common_1 = require("@nestjs/common");
+let CatsService = class CatsService {
+    constructor() {
         this.cats = [];
     }
-    CatsService.prototype.create = function (cat) {
+    create(cat) {
         this.cats.push(cat);
-    };
-    CatsService.prototype.findAll = function () {
+    }
+    findAll() {
         return this.cats;
-    };
-    CatsService = __decorate([
-        common_1.Injectable()
-    ], CatsService);
-    return CatsService;
-}());
+    }
+};
+CatsService = __decorate([
+    common_1.Injectable()
+], CatsService);
 exports.CatsService = CatsService;
