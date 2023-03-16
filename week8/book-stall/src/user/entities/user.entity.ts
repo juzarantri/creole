@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Book } from 'src/book/entities/book.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
@@ -17,9 +25,9 @@ export class User {
   /*
    * Create and Update Date Columns
    */
-  @Column({ type: 'timestamp' })
+  @CreateDateColumn({ type: 'timestamp' })
   public createdAt!: Date;
 
-  @Column({ type: 'timestamp' })
+  @UpdateDateColumn({ type: 'timestamp' })
   public updatedAt!: Date;
 }

@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { getEnvPath } from './common/helper/env.helper';
 import { TypeOrmConfigService } from './shared/typeorm/typeorm.service';
 import { UserModule } from './user/user.module';
+import { BookModule } from './book/book.module';
+import { AuthModule } from './auth/auth.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 @Module({
@@ -16,6 +18,8 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
     }),
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
     UserModule,
+    BookModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
