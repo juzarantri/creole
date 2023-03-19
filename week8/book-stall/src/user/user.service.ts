@@ -4,6 +4,8 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import * as CryptoJS from 'crypto-js';
+import { constants } from 'src/common/helper/constants';
 
 @Injectable()
 export class UserService {
@@ -14,12 +16,23 @@ export class UserService {
     const user: User = new User();
     user.username = createUserDto.username;
     user.email = createUserDto.email;
-    user.password = createUserDto.password;
-    return this.repository.save(user);
+
+    /// encoding password using AES
+    const hashPassword = CryptoJS.AES.encrypt(
+      createUserDto.password,
+      constants.secret,
+    );
+    user.password = hashPassword.toString();
+
+    return this.repository.save(user).then((value) => {
+      // console.log(typeof value);
+      delete value.password;
+      return value;
+    });
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.repository.find();
   }
 
   async findOne(username: string) {
