@@ -9,7 +9,7 @@ import { Book } from './entities/book.entity';
 @Injectable()
 export class BookService {
   @InjectRepository(Book)
-  private readonly repository: Repository<Book>;
+  private readonly bookRepo: Repository<Book>;
   @InjectRepository(User)
   private readonly userRepo: Repository<User>;
 
@@ -27,12 +27,12 @@ export class BookService {
     book.user = user;
 
     /// inserting the data
-    return this.repository.save(book);
+    return this.bookRepo.save(book);
   }
 
   findAll() {
     /// get all the books of this author
-    return this.repository.find({
+    return this.bookRepo.find({
       select: { user: { username: true, password: true } },
       relations: {
         user: true,

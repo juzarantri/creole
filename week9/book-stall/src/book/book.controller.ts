@@ -25,9 +25,10 @@ export class BookController {
     return this.bookService.createBook(createBookDto);
   }
 
-  /// to get all the book of author
+  /// to get all the books
   @Get()
   @UseGuards(AuthGuard('jwt'))
+  // @Roles(Role.ADMIN, Role.AUTHOR)
   findAll() {
     return this.bookService.findAll();
   }

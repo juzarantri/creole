@@ -1,39 +1,32 @@
 import { Book } from 'src/book/entities/book.entity';
+import { Role } from 'src/common/helper/constants';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToMany,
-  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-
-export enum roles {
-  USER = 'user',
-  AUTHOR = 'author',
-  ADMIN = 'admin',
-}
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
   public uid: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ type: 'varchar', length: 50, unique: true })
   public username: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ type: 'varchar', length: 50, unique: true })
   public email: string;
 
   @Column({ type: 'varchar', length: 50 })
   public password: string;
 
-  @Column({ type: 'enum', enum: roles, default: roles.USER })
+  @Column({ type: 'enum', enum: Role, default: Role.USER })
   public role: string;
 
-  @Column({ type: 'varchar', length: 50, default: null })
+  @Column({ type: 'varchar', length: 50, default: 'India' })
   public country: string;
 
   @Column({ type: 'text', default: null })

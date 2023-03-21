@@ -1,3 +1,4 @@
+import { Currency, GenreType } from 'src/common/helper/constants';
 import { User } from 'src/user/entities/user.entity';
 import {
   Column,
@@ -8,27 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-/// Books genre
-export enum genreTypes {
-  NOVEL = 'novel',
-  ACTION = 'action',
-  SCIFI = 'scifi',
-  ROMANCE = 'romance',
-  THRILLER = 'thriller',
-  HORROR = 'horror',
-  DRAMA = 'drama',
-  AUTOBIOGRAPHY = 'autobiography',
-  MYSTERY = 'mystery',
-  CRIME = 'crime',
-  JOURNAL = 'journal',
-}
 
-/// Currencies
-export enum currencies {
-  INR = 'inr',
-  USD = 'usd',
-  GBP = 'gbp',
-}
 
 @Entity()
 export class Book {
@@ -41,10 +22,13 @@ export class Book {
   @Column({ type: 'varchar', length: 50 })
   public bookName: string;
 
-  @Column({ type: 'enum', enum: genreTypes, default: genreTypes.NOVEL })
+  @Column({ type: 'enum', enum: GenreType, default: GenreType.NOVEL })
   public genre: string;
 
-  @ManyToOne(() => User, (user) => user.books)
+  @ManyToOne(() => User, (user) => user.books, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   public user: User;
 
   @Column({ type: 'date', default: new Date() })
@@ -53,7 +37,7 @@ export class Book {
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   public price: Number;
 
-  @Column({ type: 'enum', enum: currencies, default: currencies.INR })
+  @Column({ type: 'enum', enum: Currency, default: Currency.INR })
   public currency: string;
 
   @Column({ type: 'numeric', default: 0 })
